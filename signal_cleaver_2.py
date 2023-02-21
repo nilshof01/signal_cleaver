@@ -7,7 +7,7 @@ from tkinter.filedialog import askopenfilename
 def createFasta(proteinID, filename = "sequences_2_analyze", directory = os.path.dirname(os.path.abspath('lab_project'))): #list
     baseUrl = "http://www.uniprot.org/uniprot/"
     sequences = []
-    fastaname = directory + '\\' + filename + '.fasta'
+    fastaname = os.path.join(directory, filename + ".fasta")
     if os.path.exists(fastaname) == True:
         os.remove(fastaname)
     else:
@@ -23,8 +23,8 @@ def createFasta(proteinID, filename = "sequences_2_analyze", directory = os.path
 
     return fastaname
 
-def signalP6(proteinIDs, output_folder = os.path.dirname(os.path.abspath('lab_project')) + '\\results', output_formats = 'txt', preferred_mode = ''):
-    if os.path.isdir(output_folder) == False and output_folder == os.path.dirname(os.path.abspath('lab_project')) + '\\results':
+def signalP6(proteinIDs, output_folder = os.path.join(os.getcwd(), "results", output_formats = 'txt', preferred_mode = ''):
+    if os.path.isdir(output_folder) == False and output_folder == os.path.join(os.getcwd(), "results":
         os.mkdir("results")
     else:
         pass
