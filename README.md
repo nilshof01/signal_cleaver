@@ -13,6 +13,7 @@ conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=10
 ```
 4. After that you have to copy the model weights (.pt ending) from the signalp-6-package/models to signalp-6-package/signalp/model_weights (Just do a drag and drop)
 5. Then type in your terminal pip install signalp-6-package/
+6. Finally type in the terminal pip install requirements.txt
 
 ## Run
 To run the the script you have to go to signal_cleaver_2 and scroll down to "main" and press play.
