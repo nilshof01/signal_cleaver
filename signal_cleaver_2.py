@@ -25,6 +25,13 @@ def createFasta(proteinID, filename = "sequences_2_analyze"): #list
     return fastaname
 
 def signalP6(proteinIDs, output_formats = "txt", preferred_mode = ''):
+    """
+
+    :param proteinIDs: type "file". If you have your IDs in a txt file with one ID per line. Otherwise you have to give them in a list
+    :param output_formats: Default is txt.
+    :param preferred_mode: ""
+    :return: returns you in a loop for all protein IDs in the given file or list the output from signalp6
+    """
     main_dir = os.path.abspath("")
     output_folder = os.path.join(main_dir, "results")
     if os.path.isdir(output_folder) == False:
