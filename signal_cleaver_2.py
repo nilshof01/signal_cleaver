@@ -4,10 +4,11 @@ from Bio import SeqIO
 import os
 from tkinter.filedialog import askopenfilename
 
-def createFasta(proteinID, filename = "sequences_2_analyze", directory = os.path.dirname(os.path.abspath('lab_project'))): #list
+def createFasta(proteinID, filename = "sequences_2_analyze"): #list
+    main_dir = os.path.abspath("")
     baseUrl = "http://www.uniprot.org/uniprot/"
     sequences = []
-    fastaname = os.path.join(directory, filename + ".fasta")
+    fastaname = os.path.join(main_dir, filename + ".fasta")
     if os.path.exists(fastaname) == True:
         os.remove(fastaname)
     else:
@@ -23,8 +24,10 @@ def createFasta(proteinID, filename = "sequences_2_analyze", directory = os.path
 
     return fastaname
 
-def signalP6(proteinIDs, output_folder = os.path.join(os.getcwd(), "results", output_formats = 'txt', preferred_mode = ''):
-    if os.path.isdir(output_folder) == False and output_folder == os.path.join(os.getcwd(), "results":
+def signalP6(proteinIDs, output_formats = "txt", preferred_mode = ''):
+    main_dir = os.path.abspath("")
+    output_folder = os.path.join(main_dir, "results")
+    if os.path.isdir(output_folder) == False:
         os.mkdir("results")
     else:
         pass
@@ -41,7 +44,7 @@ def signalP6(proteinIDs, output_folder = os.path.join(os.getcwd(), "results", ou
             proteinids = proteinIDs
     for proteinID in proteinids:
         fastadir = createFasta(proteinID)
-        local_output = output_folder + '\\' + proteinID
+        local_output = os.path.join(output_folder, proteinID)
         if not os.path.exists(local_output):
             os.mkdir(local_output)
             fastafile = "--fastafile" + ' ' + fastadir
@@ -55,4 +58,5 @@ def signalP6(proteinIDs, output_folder = os.path.join(os.getcwd(), "results", ou
 
 
 if __name__ == "__main__":
+    print("Enter a protein ID")
     signalP6(proteinIDs = input())
